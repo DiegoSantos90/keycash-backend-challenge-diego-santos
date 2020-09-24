@@ -1,20 +1,17 @@
 const express = require('express');
+const PropertyController = require('../controllers/PropertyController');
 
 const propertiesRoutes = express.Router();
 
-propertiesRoutes.post('/', async (req, res) => {
-  return res.json({ ok: true });
-});
+propertiesRoutes.post('/', PropertyController.store);
 
-propertiesRoutes.put('/', async (req, res) => {
-  return res.json({ ok: true });
-});
+propertiesRoutes.put('/:id', PropertyController.updateProperty);
 
-propertiesRoutes.delete('/', async (req, res) => {
-  return res.json({ ok: true });
-});
+propertiesRoutes.delete('/:id', PropertyController.deleteProperty);
 
-propertiesRoutes.get('/', async (req, res) => {
+propertiesRoutes.get('/:id', PropertyController.searchProperty);
+
+propertiesRoutes.get('/filter', (req, res) => {
   return res.json({ ok: true });
 });
 

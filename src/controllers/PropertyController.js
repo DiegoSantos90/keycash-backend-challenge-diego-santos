@@ -1,0 +1,72 @@
+const Property = require('../models/Property');
+
+module.exports = {
+  async updateProperty(req, res) {
+    const { id } = req.params;
+
+    await Property.update(req.body, {
+      where: {
+        id,
+      }
+    });
+
+    const updateProperty = await Property.findByPk(id);
+
+    return res.json(updateProperty);
+  },
+  async deleteProperty(req, res) {
+    const { id } = req.params;
+
+    await Property.destroy({
+      where: {
+        id,
+      }
+    });
+
+    return res.status(204).send();
+  },
+
+  async searchProperty(req, res) {
+    const { id } = req.params;
+
+    const properties = await Property.findByPk(id);
+
+    return res.json(properties);
+  },
+
+  async store( req, res ) {
+    const { 
+      type,
+      value,
+      footage,
+      bedrooms,
+      bathrooms,
+      parking_spaces,
+      postal_code,
+      address,
+      neighborhood,
+      place_number,
+      apartment_number,
+      city,
+      state,
+    } = req.body;
+
+    const property = await Property.create({
+      type,
+      value,
+      footage,
+      bedrooms,
+      bathrooms,
+      parking_spaces,
+      postal_code,
+      address,
+      neighborhood,
+      place_number,
+      apartment_number,
+      city,
+      state,
+    });
+
+    return res.json(property);
+  }
+}
