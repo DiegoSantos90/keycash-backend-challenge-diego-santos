@@ -17,6 +17,10 @@ Para executar o projeto realizar os seguintes comandos:
   ``` docker-compose up ```
   em seu terminal (Necessário Docker instalado)
 
+
+Obs.: Para correto funcionamento do Docker Compose em ambientes Windows é necessário incluir diretórios no File Sharing. Documentação para a realização deste procedimento
+https://docs.docker.com/docker-for-windows/
+
 ## Documentação  
 
 Após a instalação e execução do projeto a documentação das APIs estará disponível em:
