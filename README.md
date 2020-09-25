@@ -19,5 +19,6 @@ Para executar o projeto realizar os seguintes comandos:
 
 ## Documentação  
 
-Documentação das APIs disponível em:
+Após a instalação e execução do projeto a documentação das APIs estará disponível em:
+
   - localhost:3333/api-docs
