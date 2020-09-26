@@ -1,6 +1,25 @@
 const Property = require('../models/Property');
 
+const validator = require('validator');
+
 module.exports = {
+
+  async filterProperty(req, res) {
+    try {
+      const escpQuery = Object.assign({}, ...Object.keys(req.query).map(obKey => {
+        return {[obKey]: validator.escape(req.query[obKey])}
+      }));
+  
+      const properties  = await Property.findAll({
+        where: escpQuery
+     });
+  
+      return res.json(properties);
+    } catch (err) {
+      res.status(500).json({'error':"Server error"});
+    }
+
+  },
 
   async updateProperty(req, res) {
     try {
@@ -40,7 +59,6 @@ module.exports = {
   async searchProperty(req, res) {
     try {
       const { id } = req.params;
-
       const properties = await Property.findByPk(id);
   
       return res.json(properties);        

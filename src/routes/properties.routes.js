@@ -203,8 +203,30 @@ propertiesRoutes.delete('/:id', PropertyController.deleteProperty);
  */
 propertiesRoutes.get('/:id', PropertyController.searchProperty);
 
-propertiesRoutes.get('/filter', (req, res) => {
-  return res.json({ ok: true });
-});
+/**
+ * @swagger
+ * /properties/:
+ *   get:
+ *     tags:
+ *       - Properties
+ *     description: Returns a single property
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: bedrooms
+ *         description: Number of bedrooms
+ *         in: query
+ *         type: integer
+ *       - name: parking_spaces
+ *         description: Number of parking_spaces
+ *         in: query
+ *         type: integer * 
+ *     responses:
+ *       200:
+ *         description: A property
+ *       500:
+ *         description: Server Error
+ */
+propertiesRoutes.get('/', PropertyController.filterProperty);
 
 module.exports = propertiesRoutes;
